@@ -7,8 +7,12 @@ namespace CSarp
     {
         static void Main(string[] args)
         {
-            var s = PrimaryPlayer.Instance;
-            Console.WriteLine($"{s.Name} - lvl: {s.Level}");
+            // var s = PrimaryPlayer.Instance;
+            // Console.WriteLine($"{s.Name} - lvl: {s.Level}");
+
+            var board = new GameBoard();
+            board.PlayArea(1);
+
         }
     }
 }

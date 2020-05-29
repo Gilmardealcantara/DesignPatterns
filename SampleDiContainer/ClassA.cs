@@ -1,6 +1,6 @@
 using System;
 
-namespace CSarp.DependecyInjection
+namespace SampleDiContainer
 {
     public class ClassA : IInterfaceA
     {

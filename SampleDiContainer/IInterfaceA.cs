@@ -1,4 +1,4 @@
-namespace CSarp.DependecyInjection
+namespace SampleDiContainer
 {
     public interface IInterfaceA
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace CSarp.DependecyInjection
+namespace SampleDiContainer
 {
     public class DIContainer
     {

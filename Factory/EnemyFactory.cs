@@ -5,8 +5,8 @@ namespace CSarp.Factory
         public static Zombie CreateZombie(int areaLevel)
         {
             if (areaLevel < 6)
-                return new Zombie(50, 5);
-            return new Zombie(100, 10);
+                return new Zombie(50, 5, 15);
+            return new Zombie(100, 10, 15);
         }
         public static Werewolf CreateWerewolf(int areaLevel)
         {

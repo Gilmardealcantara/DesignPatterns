@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CSarp.Factory;
+using CSarp.LooseCoupling;
 using CSarp.Singleton;
 
 namespace CSarp
@@ -11,6 +12,7 @@ namespace CSarp
         public GameBoard()
         {
             _player = PrimaryPlayer.Instance;
+            _player.Weapon = new Sword(12, 8);
         }
         public void PlayArea(int lvl)
         {
@@ -29,8 +31,18 @@ namespace CSarp
                 enemies.Add(EnemyFactory.CreateWerewolf(currentLvl));
 
             foreach (var enemy in enemies)
-                Console.WriteLine(enemy.GetType());
-
+            {
+                Console.WriteLine("\nFlight:");
+                Console.WriteLine(_player);
+                Console.WriteLine(enemy);
+                while (enemy.Health > 0 && _player.Health > 0)
+                {
+                    _player.Weapon.Use(enemy);
+                    enemy.Attack(_player);
+                }
+                Console.WriteLine(_player);
+                Console.WriteLine(enemy);
+            }
         }
     }
 }

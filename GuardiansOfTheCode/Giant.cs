@@ -1,7 +1,7 @@
 using System;
-using CSarp.Singleton;
+using GuardiansOfTheCode;
 
-namespace CSarp.Factory
+namespace GuardiansOfTheCode
 {
     public class Giant : IEnemy
     {

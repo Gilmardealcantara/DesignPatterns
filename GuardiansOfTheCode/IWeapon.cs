@@ -1,6 +1,6 @@
-using CSarp.Factory;
+using GuardiansOfTheCode;
 
-namespace CSarp.LooseCoupling
+namespace GuardiansOfTheCode
 {
     public interface IWeapon
     {

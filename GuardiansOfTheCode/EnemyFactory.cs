@@ -1,4 +1,4 @@
-namespace CSarp.Factory
+namespace GuardiansOfTheCode
 {
     public static class EnemyFactory
     {

@@ -1,6 +1,6 @@
-using CSarp.LooseCoupling;
+using GuardiansOfTheCode;
 
-namespace CSarp.Singleton
+namespace GuardiansOfTheCode
 {
     public class PrimaryPlayer
     {

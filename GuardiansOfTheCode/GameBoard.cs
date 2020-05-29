@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using CSarp.Factory;
-using CSarp.LooseCoupling;
-using CSarp.Singleton;
 
-namespace CSarp
+namespace GuardiansOfTheCode
 {
     public class GameBoard
     {

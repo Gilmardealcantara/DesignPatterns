@@ -1,6 +1,6 @@
-using CSarp.Singleton;
+using GuardiansOfTheCode;
 
-namespace CSarp.Factory
+namespace GuardiansOfTheCode
 {
     public interface IEnemy
     {

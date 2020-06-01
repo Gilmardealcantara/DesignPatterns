@@ -1,3 +1,4 @@
+using Common;
 using GuardiansOfTheCode;
 
 namespace GuardiansOfTheCode
@@ -24,6 +25,7 @@ namespace GuardiansOfTheCode
         public int Level { get; set; }
         public int Health { get; set; }
         public int Armor { get; set; }
+        public Card[] Cards { get; set; }
 
         public override string ToString()
         {

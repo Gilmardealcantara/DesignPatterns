@@ -26,5 +26,11 @@ namespace Api.Controllers
         {
             return _service.FetchCards();
         }
+
+        [HttpGet("health")]
+        public string Health()
+        {
+            return "healthy";
+        }
     }
 }

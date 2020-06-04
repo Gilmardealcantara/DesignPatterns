@@ -13,66 +13,29 @@ namespace GuardiansOfTheCode
     public class GameBoard
     {
         private PrimaryPlayer _player;
+        private GameBoardFacade _gameBoardFacade;
         public GameBoard()
         {
             _player = PrimaryPlayer.Instance;
-            _player.Weapon = new Sword(12, 8);
+            _gameBoardFacade = new GameBoardFacade();
         }
         public async Task PlayArea(int lvl)
         {
-            if (lvl == 1)
-            {
-                _player.Cards = (await this.FetchCards()).ToArray();
-                Console.WriteLine("Ready to play Level 1 ?");
-                Console.ReadKey();
-                this.PlayFirstLevel();
-            }
-            else if (lvl == -1)
+            if (lvl == -1)
             {
                 Console.WriteLine("Ready to play special Level ?");
                 Console.ReadKey();
                 this.PlaySpecialLevel();
+            }
+            else
+            {
+                await _gameBoardFacade.Play(_player, lvl);
             }
         }
 
         private void PlaySpecialLevel()
         {
             _player.Weapon = new WeaponAdapter(new Baster(20, 15, 15));
-        }
-
-        public void PlayFirstLevel()
-        {
-            int currentLvl = 1;
-            var enemies = new List<IEnemy>();
-            for (var i = 0; i < 10; i++)
-                enemies.Add(EnemyFactory.CreateZombie(currentLvl));
-
-            for (var i = 0; i < 3; i++)
-                enemies.Add(EnemyFactory.CreateWerewolf(currentLvl));
-
-            foreach (var enemy in enemies)
-            {
-                Console.WriteLine("\nFlight:");
-                Console.WriteLine(_player);
-                Console.WriteLine(enemy);
-                while (enemy.Health > 0 && _player.Health > 0)
-                {
-                    _player.Weapon.Use(enemy);
-                    enemy.Attack(_player);
-                }
-                Console.WriteLine(_player);
-                Console.WriteLine(enemy);
-            }
-        }
-
-        private async Task<IEnumerable<Card>> FetchCards()
-        {
-            using (var client = new HttpClient())
-            {
-                var cardsJson = await client.GetStringAsync("http://localhost:5000/api/cards");
-                var cards = JsonConvert.DeserializeObject<IEnumerable<Card>>(cardsJson);
-                return cards;
-            }
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Common;
 using Newtonsoft.Json;
+using MilkWayponLib;
+using GuardiansOfTheCode.Adapters;
 
 namespace GuardiansOfTheCode
 {
@@ -25,6 +27,17 @@ namespace GuardiansOfTheCode
                 Console.ReadKey();
                 this.PlayFirstLevel();
             }
+            else if (lvl == -1)
+            {
+                Console.WriteLine("Ready to play special Level ?");
+                Console.ReadKey();
+                this.PlaySpecialLevel();
+            }
+        }
+
+        private void PlaySpecialLevel()
+        {
+            _player.Weapon = new WeaponAdapter(new Baster(20, 15, 15));
         }
 
         public void PlayFirstLevel()

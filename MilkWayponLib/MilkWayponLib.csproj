@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>ExampleLibrary</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
+    <Authors>Gilmar Alcantara</Authors>
+    <Company>IBM</Company>
+    <Product>ExampleLibrary</Product>
+    <Description>An example library that does very little</Description>
+  </PropertyGroup>
+
+</Project>

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Common;
 using Newtonsoft.Json;
 
-namespace GuardiansOfTheCode.Facades.Proxies
+namespace GuardiansOfTheCode.Proxies
 {
     public class CardsProxy
     {

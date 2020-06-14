@@ -10,7 +10,7 @@ namespace GuardiansOfTheCode
         int Armor { get; set; }
         bool Paralyzed { get; set; }
         int ParalyzedFor { get; set; }
-        void Attack(PrimaryPlayer player);
+        int Attack(PrimaryPlayer player);
         void Defend(PrimaryPlayer player);
     }
 }

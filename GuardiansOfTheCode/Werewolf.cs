@@ -22,9 +22,10 @@ namespace GuardiansOfTheCode
         public int Health { get => _health; set => _health = value; }
         public int Level => _level;
 
-        public void Attack(PrimaryPlayer player)
+        public int Attack(PrimaryPlayer player)
         {
             Console.WriteLine($"Werewolf attacking {player.Name}");
+            return 20;
         }
 
         public void Defend(PrimaryPlayer player)

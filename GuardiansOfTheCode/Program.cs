@@ -16,6 +16,7 @@ namespace GuardiansOfTheCode
                 TestApiConnection().Wait();
                 var board = new GameBoard();
                 board.PlayArea(1).Wait();
+
             }
             catch (Exception e)
             {

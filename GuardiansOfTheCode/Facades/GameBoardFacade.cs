@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
-using GuardiansOfTheCode.Facades.Proxies;
+using GuardiansOfTheCode.Proxies;
+using GuardiansOfTheCode.Strategies;
 
 namespace GuardiansOfTheCode
 {
@@ -29,8 +31,8 @@ namespace GuardiansOfTheCode
             LoadWerewolves(areaLevel);
             LoadGiants(areaLevel);
             // Begin Playing Logic
-
-            if (areaLevel == 1) this.PlayFirstLevel();
+            this.StartTurns();
+            // if (areaLevel == 1) this.PlayFirstLevel();
         }
 
         private void ConfigurePlayerWeapon()
@@ -115,6 +117,39 @@ namespace GuardiansOfTheCode
                 }
                 Console.WriteLine(_player);
                 Console.WriteLine(enemy);
+            }
+        }
+
+        private void StartTurns()
+        {
+            IEnemy currentEnemy = null;
+            while (true)
+            {
+                if (currentEnemy == null)
+                {
+                    if (_enemies.Count > 0)
+                    {
+                        currentEnemy = _enemies[0];
+                        _enemies.RemoveAt(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You won this level !");
+                        break;
+                    }
+                }
+                // // your turn
+                // _player.Weapon.Use(currentEnemy);
+                // // enemy's turn
+                // currentEnemy.Attack(_player);
+                var damage = currentEnemy.Attack(_player);
+                _player.Health -= damage;
+                if (_player.Health < 20)
+                    new CriticalHealthIndicator().NotifyAboutDamage(_player.Health, damage);
+                else
+                    new RegularDamageIndicator().NotifyAboutDamage(_player.Health, damage);
+
+                Thread.Sleep(500);
             }
         }
 

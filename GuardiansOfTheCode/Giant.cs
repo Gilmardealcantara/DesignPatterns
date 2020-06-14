@@ -22,9 +22,10 @@ namespace GuardiansOfTheCode
         public bool Paralyzed { get; set; }
         public int ParalyzedFor { get; set; }
 
-        public void Attack(PrimaryPlayer player)
+        public int Attack(PrimaryPlayer player)
         {
             Console.WriteLine($"Giant attacking {player.Name}");
+            return 30;
         }
 
         public void Defend(PrimaryPlayer player)

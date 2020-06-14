@@ -23,9 +23,10 @@ namespace GuardiansOfTheCode
         public bool Paralyzed { get; set; }
         public int ParalyzedFor { get; set; }
 
-        public void Attack(PrimaryPlayer player)
+        public int Attack(PrimaryPlayer player)
         {
             Console.WriteLine($"Zombie attacking {player.Name}");
+            return 10;
         }
 
         public void Defend(PrimaryPlayer player)

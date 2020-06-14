@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Common;
-using Newtonsoft.Json;
+using GuardiansOfTheCode.Facades.Proxies;
 
 namespace GuardiansOfTheCode
 {
@@ -14,7 +13,12 @@ namespace GuardiansOfTheCode
         private int _areaLevel;
         private HttpClient _http;
         private List<IEnemy> _enemies = new List<IEnemy>();
+        private CardsProxy _cardsProxy;
 
+        public GameBoardFacade()
+        {
+            _cardsProxy = new CardsProxy();
+        }
         public async Task Play(PrimaryPlayer player, int areaLevel)
         {
             _player = player;
@@ -68,29 +72,25 @@ namespace GuardiansOfTheCode
 
         private async Task AddPlayerCards()
         {
-            using (_http = new HttpClient())
-            {
-                var cardsJson = await _http.GetStringAsync("http://localhost:5000/api/cards");
-                var cards = JsonConvert.DeserializeObject<IEnumerable<Card>>(cardsJson);
-                _player.Cards = cards.ToArray();
-            }
+            var cards = await _cardsProxy.GetCards();
+            _player.Cards = cards.ToArray();
         }
 
-        private void LoadZombies(int areaLelvel)
+        private void LoadZombies(int areaLevel)
         {
             for (var i = 0; i < 10; i++)
-                _enemies.Add(EnemyFactory.CreateZombie(areaLelvel));
+                _enemies.Add(EnemyFactory.CreateZombie(areaLevel));
         }
 
-        private void LoadWerewolves(int areaLelvel)
+        private void LoadWerewolves(int areaLevel)
         {
             for (var i = 0; i < 3; i++)
-                _enemies.Add(EnemyFactory.CreateWerewolf(areaLelvel));
+                _enemies.Add(EnemyFactory.CreateWerewolf(areaLevel));
         }
-        private void LoadGiants(int areaLelvel)
+        private void LoadGiants(int areaLevel)
         {
             for (var i = 0; i < 10; i++)
-                _enemies.Add(EnemyFactory.CreateGiant(areaLelvel));
+                _enemies.Add(EnemyFactory.CreateGiant(areaLevel));
         }
 
         private void PlayFirstLevel()

@@ -45,7 +45,14 @@ The proxy stands as a middleware between the api of bards and the Game board Fac
 ## 5 - Behavioral Design Patterns
 
 5.1 - Strategy Pattern
+The primary advantage that the strategy pattern is the ability to pick the most appropriated
+algorithm from a group of similar algorithms at runtime. Used here to implements notifications
+
 5.2 - Observer Pattern
+The concept is pretty simple. You have an entity, a subject that you might want to watch for changes. It could be a property or it could be an event that's usually triggered. Then, you have a list of observers that register to that property, and when that property changes they are notified back with the change and each and every one of them may behave differently depending on their specific task. But all of them will be notified at the same time as a group for the change of the property.
+
+In c# the implementation is built in using events.
+
 5.3 - Command Pattern
 5.4 - Template Method
 5.5 - State Pattern

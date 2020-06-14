@@ -6,10 +6,12 @@ namespace GuardiansOfTheCode.Strategies
     {
         public void NotifyAboutDamage(int health, int damage)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"HEALTH CRITICAL! {damage} points taken, {health} HP remaining");
-            Console.ForegroundColor = ConsoleColor.White;
-
+            if (health <= 20)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"HEALTH CRITICAL! {damage} points taken, {health} HP remaining");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
     }
 }

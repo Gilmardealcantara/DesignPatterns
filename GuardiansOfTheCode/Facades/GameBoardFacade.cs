@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using GuardiansOfTheCode.Observer;
 using GuardiansOfTheCode.Proxies;
 using GuardiansOfTheCode.Strategies;
 
@@ -123,6 +124,12 @@ namespace GuardiansOfTheCode
         private void StartTurns()
         {
             IEnemy currentEnemy = null;
+
+            var regularObserver = new HealthChangedObserver(new RegularDamageIndicator());
+            var criticalObserver = new HealthChangedObserver(new CriticalHealthIndicator());
+            regularObserver.WatchPlayerHealth(_player);
+            criticalObserver.WatchPlayerHealth(_player);
+
             while (true)
             {
                 if (currentEnemy == null)
@@ -143,12 +150,7 @@ namespace GuardiansOfTheCode
                 // // enemy's turn
                 // currentEnemy.Attack(_player);
                 var damage = currentEnemy.Attack(_player);
-                _player.Health -= damage;
-                if (_player.Health < 20)
-                    new CriticalHealthIndicator().NotifyAboutDamage(_player.Health, damage);
-                else
-                    new RegularDamageIndicator().NotifyAboutDamage(_player.Health, damage);
-
+                _player.Hit(damage);
                 Thread.Sleep(500);
             }
         }

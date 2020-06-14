@@ -1,3 +1,5 @@
+Design Patterns Using C# and .NET Core
+
 1 - SOLID Principles
 1.1 - Single Responsibility Principle
 1.2 - Open/d Principle
@@ -24,8 +26,16 @@
 4.3 - Facade Pattern
 The goals is to simplify an interface -> (GameBoard, GameBoardFacade)
 Law of Demeter
+4.4 - Composite Pattern
+Used to create part-whole collections in the form of tree-like
+structures that can contain both individual items and collections as well
+part-whole collections
 
-4.4 -
-4.5 -
+4.5 - Proxy Pattern
 
 5 - Behavioral Design Patterns
+5.1 - Strategy Pattern
+5.2 - Observer Pattern
+5.3 - Command Pattern
+5.4 - Template Method
+5.5 - State Pattern

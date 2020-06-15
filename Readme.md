@@ -1,31 +1,92 @@
 # Design Patterns Using C# and .NET Core
 
+Generalized, reusable solutions to common design issues in software engineering.
+Groups:
+Creational:
+Patterns are all about instantiating objects, how objects are instantiating and
+how many instances of them we are allowed to create.
+
+Structural:
+Patterns are about the app's structure. Sometime you have complex class or objects or objects that are
+composed from smaller class or objects. Structural design pattern offers the most efficient way to work in situations like this and solve any challenges that may arise.
+
+Behavior:
+Determine ways of application flow and how objects communicate with each other and how they interact
+with each other.
+
+- https://github.com/PacktPublishing/Design-Patterns-using-C-and-.NET-Core
+- https://refactoring.guru/design-patterns
+
 ## 1 - SOLID Principles
 
 1.1 - Single Responsibility Principle
-1.2 - Open/d Principle
-1.3 - Liskov Substitution Principle
-1.4 - Interface Segregation Principle
-1.5 - Dependency Inversion Principle
-1.5.1 - DIP vs IoC vs DI
+A class or method should be responsible for a single part of the functionality
+A class or method has only one reason for change.
 
-2.3 - Loose Coupling
+1.2 - Open/d Principle
+Open to extension and close to modification
+
+1.3 - Liskov Substitution Principle
+Also Know as Substitutability. You should be able to use a subclass
+in place of its parent class, or
+a subclass should be used wherever its base class can be used
+
+1.4 - Interface Segregation Principle
+Your classes and modules should depends on abstractions instead of concrete implementations (abstractions = interfaces)
 
 ## 2 - Creational Design Patterns
 
 2.1 - Singleton Pattern
+You can have only a single instance of a specific class throughout the entire application
+
 2.2 - Factory Pattern
-2.4 - Object Pool
+Combine SRP and OCP.
+Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
+
+2.3 - Loose Coupling
+Software parts that communicate with each other have little to no knowledge of each other's actual implementation
+
+Loose coupling is all about interfaces. Parts of the system communicate through conventions that are established and enforced through interfaces. They don't have to know about how each of the parts is designed.
+
+2.4 - Object Pool (not implemented)
+A pool of pre-initialized objects whose initialization is heavyweight. Every time we need such and object
+we take one from the pool and return it back to the pool.
 
 ## 3 - Dependency Injection
 
-3.1 - Creating a Custom Container
-3.2 - Built-in ASP.NET Core IoC Container
-3.3 - Singleton Versus Transient Versus Scoped
+3.1 - Introduction (DI)
+-new is not allowed
+-and OOP not exists without 'new'
+-Allowed to create instance of VOs (Value Objects)
+-Factories
+-Not allowed to use 'new' with dependencies
+-Need a DI Container
+
+3.2 - Creating a Custom Container
+DI Container = IoC Container
+Register and resolver dependencies
+
+3.3 - Built-in ASP.NET Core IoC Container
+
+3.4 - Singleton Versus Transient Versus Scoped
+Singleton:
+The service is instantiated once and used throughout the application
+The service is created the first time we request it.
+Transient:
+A new instance is created every time we request it.
+Scoped:
+A new instance is created for every Http Request, not by service request
+
+3.5\* - DIP vs IoC vs DI
+https://www.tutorialsteacher.com/ioc/introduction
 
 ## 4 - Structural Design Patterns
 
 4.1 - Decorator Pattern
+Decorator is a structural design pattern that lets you attach new behaviors to objects by placing these
+objects inside special wrapper objects that contain the behaviors.
+-Respect the Open/Close Principle
+-Used here to combine cards
 
 4.2 - Adapter Pattern (Convert a interface in another) (WeaponAdapter)
 

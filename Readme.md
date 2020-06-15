@@ -67,5 +67,7 @@ The command pattern allows the execution of different encapsulated commands.
 The command pattern can be stored, reused or used for und purposes.
 
 5.4 - Template Method
+Template pattern use inheritance instead of interfaces. We demonstrate the template method pattern by an example, and that example will be the creation of multiple battlefields in our application.
 
 5.5 - State Pattern
+The state pattern is great at well, imitating states in your app. This is a finite state machine diagram. We begin with three states for our multiplayer mode subscription.

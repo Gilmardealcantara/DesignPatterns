@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using GuardiansOfTheCode.Battlefields;
 
 namespace GuardiansOfTheCode
 {
@@ -11,6 +12,8 @@ namespace GuardiansOfTheCode
         {
             // var s = PrimaryPlayer.Instance;
             // Console.WriteLine($"{s.Name} - lvl: {s.Level}");
+            TestBattleFields();
+            return;
             try
             {
                 TestApiConnection().Wait();
@@ -50,5 +53,17 @@ namespace GuardiansOfTheCode
                 throw new Exception("Failed to connect to server");
             }
         }
+
+        private static void TestBattleFields()
+        {
+            Console.WriteLine("VolcanoBattleField:");
+            BattlefieldTemplate battlefield = new VolcanoBattleField();
+            Console.WriteLine(battlefield.Describe());
+
+            Console.WriteLine("\nSnowyBattleField:");
+            BattlefieldTemplate battlefield2 = new SnowyBattleField();
+            Console.WriteLine(battlefield2.Describe());
+        }
+
     }
 }

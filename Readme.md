@@ -54,5 +54,18 @@ The concept is pretty simple. You have an entity, a subject that you might want 
 In c# the implementation is built in using events.
 
 5.3 - Command Pattern
+Encapsulate a request as an object, thereby letting you parametrize clients with different requests, queue or log requests, and support undoubled operations.
+Promote "invocation of a method on an object" to full object status
+
+Here we will encapsulate the battle between the two entities in a command.
+
+Command vs strategy
+
+Strategy pattern handles the objects, the command also change the state.
+Strategy algorithms are swappable.
+The command pattern allows the execution of different encapsulated commands.
+The command pattern can be stored, reused or used for und purposes.
+
 5.4 - Template Method
+
 5.5 - State Pattern

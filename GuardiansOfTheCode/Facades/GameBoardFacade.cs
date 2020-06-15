@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using GuardiansOfTheCode.Commands;
 using GuardiansOfTheCode.Observer;
 using GuardiansOfTheCode.Proxies;
 using GuardiansOfTheCode.Strategies;
@@ -145,15 +146,28 @@ namespace GuardiansOfTheCode
                         break;
                     }
                 }
-                // // your turn
-                // _player.Weapon.Use(currentEnemy);
-                // // enemy's turn
-                // currentEnemy.Attack(_player);
-                var damage = currentEnemy.Attack(_player);
-                _player.Hit(damage);
-                Thread.Sleep(500);
+                var commands = this.GetCommands(currentEnemy);
+                foreach (var command in commands)
+                {
+                    command.Execute();
+                    if (_player.Health <= 0 || currentEnemy.Health <= 0)
+                    {
+                        break;
+                    }
+                }
+                // Thread.Sleep(500);
             }
         }
 
+        private IEnumerable<ICommand> GetCommands(IEnemy enemy)
+        {
+            List<ICommand> commands = new List<ICommand>();
+            commands.Add(new PlayerEnemyBattleCommand(_player, enemy));
+            foreach (var card in _player.Cards)
+            {
+                commands.Add(new CardEnemyBattleCommand(card, enemy));
+            }
+            return commands;
+        }
     }
 }
